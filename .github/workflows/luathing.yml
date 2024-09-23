@@ -1,0 +1,34 @@
+name: luathing
+
+on:
+  workflow_dispatch:
+    inputs:
+      chosen-os:
+        required: true
+        type: choice
+        options:
+        - Ubuntu
+        - macOS
+        - Windows
+
+jobs:
+  test:
+    runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: leafo/gh-actions-lua@v10
+      with:
+        luaVersion: "5.4.7"
+
+    - uses: leafo/gh-actions-luarocks@v4
+
+    - name: build
+      run: |
+        luarocks install busted
+        luarocks make
+
+    - name: test
+      run: |
+        busted -o utfTerminal

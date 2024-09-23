@@ -33,6 +33,7 @@ jobs:
     - name: build
       run: |
         luarocks install busted
+        luarocks install torch
         luarocks make rocks/nn-scm-1.rockspec
 
     - name: test

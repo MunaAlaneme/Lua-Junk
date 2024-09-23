@@ -1,4 +1,4 @@
-name: luathing
+name: main
 
 on:
   workflow_dispatch:

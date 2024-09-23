@@ -34,6 +34,8 @@ jobs:
     - name: build
       run: |
         luarocks install busted
+        luarocks install penlight
+        luarocks install luafilesystem
         luarocks install torch
         luarocks make rocks/nn-scm-1.rockspec
 

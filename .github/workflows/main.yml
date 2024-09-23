@@ -24,7 +24,7 @@ jobs:
     - uses: actions/checkout@master
     - uses: ilammy/msvc-dev-cmd@v1
         
-    - uses: leafo/gh-actions-lua@10.0.0
+    - uses: leafo/gh-actions-lua@10
       with:
         luaVersion: "5.4.7"
         buildCache: true

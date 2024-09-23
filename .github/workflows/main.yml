@@ -23,10 +23,6 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: ilammy/msvc-dev-cmd@v1
-
-    - name: idfb
-      run: |
-        --check-lua-versions
         
     - uses: leafo/gh-actions-lua@v10
       with:

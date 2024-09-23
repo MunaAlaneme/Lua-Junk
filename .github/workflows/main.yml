@@ -26,7 +26,7 @@ jobs:
 
     - name: idfb
       run: |
-        check-lua-versions
+        --check-lua-versions
         
     - uses: leafo/gh-actions-lua@v10
       with:

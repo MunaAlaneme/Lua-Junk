@@ -5,6 +5,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+  - cron: "0 2 * * 1-7"
 #  workflow_dispatch:
 #    inputs:
 #      chosen-os:
@@ -18,7 +20,7 @@ on:
 jobs:
   test:
     #runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@master

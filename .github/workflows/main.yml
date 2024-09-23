@@ -20,13 +20,16 @@ jobs:
     #runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
     runs-on: macos-latest
 
+    - name: no
+      run: --check-lua-versions
+
     steps:
     - uses: actions/checkout@master
     - uses: ilammy/msvc-dev-cmd@v1
 
     - uses: leafo/gh-actions-lua@v10
       with:
-        luaVersion: "5.3"
+        luaVersion: "5.4.7"
 
     - uses: leafo/gh-actions-luarocks@v4
 

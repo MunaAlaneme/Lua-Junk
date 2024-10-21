@@ -187,7 +187,7 @@ function love.draw()
     TestMenu2:draw(10*WindowXScale + (windowWidth/2)*3, 400 * WindowYScale, 300 * WindowXScale, 40 * WindowYScale, 128, 0, 255, 128)
     love.graphics.setFont(font)
     -- render svg at mouse position.
-	graphics:draw(mouseeX, mouseeY)
+	-- graphics:draw(mouseeX, mouseeY)
     -- others
     love.graphics.print("Hello World!", 10*WindowXScale, 50*windowScale)
     love.graphics.print("Settings", 910*WindowXScale, 50*windowScale)

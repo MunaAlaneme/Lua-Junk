@@ -1,11 +1,14 @@
--- poke1024 - TÖVE (SVG)
+-- poke1024 - TÖVE (SVG) - May 19, 2018
 -- https://github.com/poke1024/tove2d
 
--- nkorth on Sunday September 18, 2011 10:14pm
+-- nkorth - Sunday September 18, 2011 10:14pm
 -- https://love2d.org/forums/viewtopic.php?t=3636
 
 -- (Vrld) Matthias Richter - hump (camera) - May 1, 2016
 -- https://github.com/vrld/hump
+
+-- 2dengine - love.maker - December 4, 2021
+-- https://github.com/2dengine/love.maker
 
 local tove = require "tove"
 local camera = require 'lib.humpcamera'

@@ -1,0 +1,20 @@
+name = "LuaLovePlatformer"
+default_targets = ["win32", "win64", "appimage", "macos"]
+build_directory = "makelove-build"
+icon_file = "graphics/icon.png"
+
+love_files = [
+    "::git-ls-tree::",
+    "-*/.*",
+]
+
+# TODO: more metadata
+
+[windows.exe_metadata]
+ProductName = "Lua Love Platformer"
+
+[linux.desktop_file_metadata]
+Name = "Lua Love Platformer"
+
+[macos.app_metadata]
+CFBundleDisplayName = "Lua Love Platformer"

@@ -5,6 +5,6 @@ function love.conf(t)
 	--t.screen = false
 	t.modules.physics = false
 	t.version = "11.5"
-	t.window = true
+	t.window = false
 	t.externalstorage = true
 end

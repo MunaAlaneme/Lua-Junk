@@ -55,8 +55,8 @@ local DropdownOptions1 = {
 }  
 
 function love.load()
-    screen_width = 600
-    screen_height = 600
+    screen_width = 640
+    screen_height = 360
     CamX = screen_width / 2
     CamY = screen_height / 2
     cam = camera(CamX,CamY)

@@ -10,7 +10,7 @@
 -- 2dengine - love.maker - December 4, 2021
 -- https://github.com/2dengine/love.maker
 
-local tove = require "tove"
+local tove = require "lib.ext.tove"
 local camera = require 'lib.humpcamera'
 local music
 local musicStart

@@ -1,4 +1,4 @@
-- name: Build macOS packages
+- name: Compile
   id: build-packages
   uses: love-action/love-actions-macos-portable@v1
   with:

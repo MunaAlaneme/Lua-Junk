@@ -16,7 +16,7 @@ jobs:
       name: Checkout Repository
     - name: Extract Metadata
       id: metadata
-      run: python3 /.scripts/extract-metadata.py
+      run: python3 .scripts/extract-metadata.py
     - name: Add Universe Repository
       run: sudo add-apt-repository universe
     - name: Update Packages

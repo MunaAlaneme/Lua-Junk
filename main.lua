@@ -1,6 +1,9 @@
 -- poke1024 - TÖVE (SVG) - May 19, 2018
 -- https://github.com/poke1024/tove2d
 
+-- nasso - Lovector (SVG) - March 16, 2019
+-- https://github.com/nasso/lovector
+
 -- nkorth - Sunday September 18, 2011 10:14pm
 -- https://love2d.org/forums/viewtopic.php?t=3636
 
@@ -10,11 +13,13 @@
 -- 2dengine - love.maker - December 4, 2021
 -- https://github.com/2dengine/love.maker
 
-local tove = require "lib.ext.tove"
+-- local tove = require "lib.ext.tove"
+local lovector = require "lib.ext.lovector"
 local camera = require 'lib.humpcamera'
 local music
 local musicStart
 local font
+local graphics = nil
 
 Menu = require 'lib.menu'
 
@@ -23,8 +28,8 @@ fullscreen = false
 -- load graphics from svg file. TÖVE also supports
 -- constructing vector graphics on the fly.
 
-svgData = love.filesystem.read("assets/img/vector/emoji_u274c2.svg")
-graphics = tove.newGraphics(svgData, 200)
+-- svgData = love.filesystem.read("assets/img/vector/emoji_u274c2.svg")
+-- graphics = tove.newGraphics(svgData, 200)
 frames = 0
 musicNumi = love.math.random(0, 1)
 if musicNumi == 0 then
@@ -44,7 +49,7 @@ musicStart:play()
 -- "mesh" will tesselate into a mesh
 -- "gpux" will use a shader implementation
 
-graphics:setDisplay("mesh", 200)
+-- graphics:setDisplay("mesh", 200)
 
 local Dropdown1is_open = false
 local Dropdown1selected_index = 1
@@ -62,14 +67,15 @@ function love.load()
     cam = camera(CamX,CamY)
     windowScale = 1
     ActualWindowScale = 1
-
+    
     love.window.setTitle("First Lua Game")
-    love.window.setMode(screen_width, screen_height, {resizable = true, msaa = 0, highdpi = true})
+    love.window.setMode(screen_width, screen_height, {resizable = true, msaa = 0, highdpi = true, vsync = false})
     love.graphics.setDefaultFilter('nearest', 'nearest')
+    graphics = lovector.SVG("assets/img/vector/emoji_u274c2.svg")
     font = love.graphics.newFont("assets/fonts/Roboto/Roboto-Regular.ttf", 24)
     love.graphics.setFont(font)
     Screen = "TitleMenu"
-
+    
     MusicSlider = {
         x = 1210,
         y = 230,
@@ -180,14 +186,15 @@ end
 
 function love.draw()
     cam:attach()
-    graphics = tove.newGraphics(svgData, 50 * windowScale)
-    graphics:setDisplay("mesh", 50 * windowScale)
     font = love.graphics.newFont("assets/fonts/Roboto/Roboto-Regular.ttf", 24*windowScale)
     TestMenu1:draw(10 * WindowXScale, 275 * WindowYScale, 300 * WindowXScale, 40 * WindowYScale, 128, 0, 255, 128)
     TestMenu2:draw(10*WindowXScale + (windowWidth/2)*3, 275 * WindowYScale, 300 * WindowXScale, 40 * WindowYScale, 128, 0, 255, 128)
     love.graphics.setFont(font)
     -- render svg at mouse position.
-    graphics:draw(mouseeX, mouseeY)
+    love.graphics.print(windowScale, 10*WindowXScale, 50*windowScale)
+    graphics = lovector.SVG("assets/img/vector/emoji_u274c2.svg")
+    graphics:draw(mouseeX, mouseeY, 50 * windowScale)
+    love.graphics.draw(love.graphics.newImage("/assets/img/raster/emoji_u274c2.png"), mouseeX - 32*windowScale, mouseeY - 32*windowScale, 0, windowScale/32)
     -- others
     love.graphics.setFont(love.graphics.newFont("assets/fonts/Roboto/Roboto-Bold.ttf", 24*windowScale))
     love.graphics.print("Hello World!", 10*WindowXScale, 10*windowScale)
@@ -207,7 +214,7 @@ function love.draw()
     -- Draw MusicSlider background
     love.graphics.setColor(0.5, 0.5, 0.5)
     love.graphics.rectangle("fill", MusicSlider.x*WindowXScale, MusicSlider.y*windowScale, MusicSlider.width*WindowXScale, MusicSlider.height*windowScale)
-
+    
     -- Draw MusicSlider handle
     love.graphics.setColor(1, 1, 1)
     love.graphics.rectangle("fill", ((MusicSlider.x + MusicSlider.width * MusicSlider.value) - 5)*WindowXScale, (MusicSlider.y - 5)*windowScale, 10*WindowXScale, (MusicSlider.height + 10)*windowScale)

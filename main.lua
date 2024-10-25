@@ -55,8 +55,8 @@ local DropdownOptions1 = {
 }  
 
 function love.load()
-    screen_width = 640
-    screen_height = 360
+    screen_width = 800
+    screen_height = 450
     CamX = screen_width / 2
     CamY = screen_height / 2
     cam = camera(CamX,CamY)
@@ -71,8 +71,8 @@ function love.load()
     Screen = "TitleMenu"
 
     MusicSlider = {
-        x = 910,
-        y = 250,
+        x = 1210,
+        y = 230,
         width = 200,
         endx = 300,
         height = 20,
@@ -137,7 +137,7 @@ ActualWindowScale = 1
 WindowYScale = 1
 WindowXScale = 1
 oldWindowScale = 1
-windowWidth, windowHeight = 600, 600
+windowWidth, windowHeight = 800, 450
 function love.update(dt)
     frames = frames + 1
     oldWindowWidth, oldWindowHeight, oldFlags = love.window.getMode()
@@ -183,24 +183,25 @@ function love.draw()
     graphics = tove.newGraphics(svgData, 50 * windowScale)
     graphics:setDisplay("mesh", 50 * windowScale)
     font = love.graphics.newFont("assets/fonts/Roboto/Roboto-Regular.ttf", 24*windowScale)
-    TestMenu1:draw(10 * WindowXScale, 400 * WindowYScale, 300 * WindowXScale, 40 * WindowYScale, 128, 0, 255, 128)
-    TestMenu2:draw(10*WindowXScale + (windowWidth/2)*3, 400 * WindowYScale, 300 * WindowXScale, 40 * WindowYScale, 128, 0, 255, 128)
+    TestMenu1:draw(10 * WindowXScale, 275 * WindowYScale, 300 * WindowXScale, 40 * WindowYScale, 128, 0, 255, 128)
+    TestMenu2:draw(10*WindowXScale + (windowWidth/2)*3, 275 * WindowYScale, 300 * WindowXScale, 40 * WindowYScale, 128, 0, 255, 128)
     love.graphics.setFont(font)
     -- render svg at mouse position.
     graphics:draw(mouseeX, mouseeY)
     -- others
-    love.graphics.print("Hello World!", 10*WindowXScale, 50*windowScale)
-    love.graphics.print("Settings", 910*WindowXScale, 50*windowScale)
-    love.graphics.print("FPS: ".. tostring(love.timer.getFPS()), 910*WindowXScale, 100*windowScale)
-    love.graphics.print("REAL FPS: ".. tostring(1/love.timer.getDelta()), 910*WindowXScale, 125*windowScale)
-    love.graphics.print("Average FPS: ".. tostring(1/love.timer.getAverageDelta()), 910*WindowXScale, 150*windowScale)
-    love.graphics.print("You wasted ".. tostring(love.timer.getTime()) .. " seconds of your life.", 910*WindowXScale, 175*windowScale)
-    love.graphics.print("Mouse X: " .. mouseX, 910*WindowXScale, 275*windowScale)
-    love.graphics.print("Total Frames: ".. frames, 910*WindowXScale, 300*windowScale)
-    love.graphics.print("Mouse Y: " .. mouseY, 910*WindowXScale, 325*windowScale)
     love.graphics.setFont(love.graphics.newFont("assets/fonts/Roboto/Roboto-Bold.ttf", 24*windowScale))
-    love.graphics.print("Music Volume", 910*WindowXScale, 217*windowScale)
-    love.graphics.print(MusicSlider.value*100 .. "%", 1116*WindowXScale, 246*windowScale)
+    love.graphics.print("Hello World!", 10*WindowXScale, 10*windowScale)
+    love.graphics.print("Settings", 10*WindowXScale + (windowWidth/2)*3, 10*windowScale)
+    love.graphics.setFont(font)
+    love.graphics.print("FPS: ".. tostring(love.timer.getFPS()), 10*WindowXScale + (windowWidth/2)*3, 35*windowScale)
+    love.graphics.print("REAL FPS: ".. tostring(1/love.timer.getDelta()), 10*WindowXScale + (windowWidth/2)*3, 60*windowScale)
+    love.graphics.print("Average FPS: ".. tostring(1/love.timer.getAverageDelta()), 10*WindowXScale + (windowWidth/2)*3, 85*windowScale)
+    love.graphics.print("Total Frames: ".. frames, 10*WindowXScale + (windowWidth/2)*3, 110*windowScale)
+    love.graphics.print("You wasted ".. tostring(love.timer.getTime()) .. " seconds of your life.", 10*WindowXScale + (windowWidth/2)*3, 135*windowScale)
+    love.graphics.print("Mouse Position: " .. mouseX .. ", " .. mouseY, 10*WindowXScale + (windowWidth/2)*3, 160*windowScale)
+    love.graphics.setFont(love.graphics.newFont("assets/fonts/Roboto/Roboto-Bold.ttf", 24*windowScale))
+    love.graphics.print("Music Volume", 10*WindowXScale + (windowWidth/2)*3, 200*windowScale)
+    love.graphics.print(math.ceil(MusicSlider.value*100) .. "%", 225*WindowXScale + (windowWidth/2)*3, 225*windowScale)
     love.graphics.setFont(font)
     
     -- Draw MusicSlider background

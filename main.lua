@@ -13,7 +13,6 @@
 -- 2dengine - love.maker - December 4, 2021
 -- https://github.com/2dengine/love.maker
 
--- local tove = require "lib.ext.tove"
 local lovector = require "lib.ext.lovector"
 local camera = require 'lib.humpcamera'
 local music
@@ -29,7 +28,6 @@ fullscreen = false
 -- constructing vector graphics on the fly.
 
 -- svgData = love.filesystem.read("assets/img/vector/emoji_u274c2.svg")
--- graphics = tove.newGraphics(svgData, 200)
 frames = 0
 musicNumi = love.math.random(0, 1)
 if musicNumi == 0 then
@@ -194,7 +192,7 @@ function love.draw()
     love.graphics.print(windowScale, 10*WindowXScale, 50*windowScale)
     graphics = lovector.SVG("assets/img/vector/emoji_u274c2.svg")
     graphics:draw(mouseeX, mouseeY, 50 * windowScale)
-    love.graphics.draw(love.graphics.newImage("/assets/img/raster/emoji_u274c2.png"), mouseeX - 32*windowScale, mouseeY - 32*windowScale, 0, windowScale/32)
+    love.graphics.draw(love.graphics.newImage("/assets/img/raster/emoji_u274c2.png"), mouseeX - 16*windowScale, mouseeY - 16*windowScale, 0, windowScale/64)
     -- others
     love.graphics.setFont(love.graphics.newFont("assets/fonts/Roboto/Roboto-Bold.ttf", 24*windowScale))
     love.graphics.print("Hello World!", 10*WindowXScale, 10*windowScale)
@@ -253,14 +251,14 @@ function love.keypressed(key)
     -- Press 'Up' arrow key to increase window scale
     if key == "right" then
         if (TestMenu2.selected == 2) and (Screen == "SettingsScreen") then
-            ActualWindowScale = ActualWindowScale + 0.5
+            ActualWindowScale = ActualWindowScale + 0.25
             love.window.setMode(screen_width * ActualWindowScale, screen_height * ActualWindowScale, {resizable = true, msaa = 0, highdpi = true})
             cam:move((CamX*ActualWindowScale) - cam.x, (CamY*ActualWindowScale) - cam.y)
         end
     end
     if key == "left" and (ActualWindowScale > 0.5) then
         if (TestMenu2.selected == 2) and (Screen == "SettingsScreen") then
-            ActualWindowScale = ActualWindowScale - 0.5
+            ActualWindowScale = ActualWindowScale - 0.25
             love.window.setMode(screen_width * ActualWindowScale, screen_height * ActualWindowScale, {resizable = true, msaa = 0, highdpi = true})
             cam:move((CamX*ActualWindowScale) - cam.x, (CamY*ActualWindowScale) - cam.y)
         end

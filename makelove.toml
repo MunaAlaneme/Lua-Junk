@@ -1,5 +1,5 @@
 name = "LuaLovePlatformer"
-default_targets = ["win32", "win64", "appimage", "macos"]
+default_targets = ["win32", "win64", "macos", "appimage"]
 build_directory = "makelove-build"
 icon_file = "assets/img/raster/emoji_u274c2.png"
 

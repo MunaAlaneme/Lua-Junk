@@ -57,7 +57,7 @@ jobs:
       uses: qixils/love-actions-android@v1
       with:
         app-name: ${{ steps.metadata.outputs.title }}
-        bundle-id: love.to.androidmari0 # backwards compatibility
+        bundle-id: com.MunaAlaneme.LuaLovePlatformer # backwards compatibility
         product-name: ${{ steps.metadata.outputs.id }}
         resource-path: "main/.android-resources"
         love-ref: 11.x
@@ -70,14 +70,13 @@ jobs:
         keystore-base64: ${{ env.KEYSTORE_BASE64 }}
         keystore-key-password: ${{ env.KEYSTORE_KEYPASSWORD }}
         keystore-store-password: ${{ env.KEYSTORE_STOREPASSWORD }}
+    - name: Artifact (Android Release)
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.metadata.outputs.id }}-android-release
+        path: main/makelove-build/android/${{ steps.metadata.outputs.id }}-release.apk
     - name: Artifact (Android Debug)
       uses: actions/upload-artifact@v4
       with:
         name: ${{ steps.metadata.outputs.id }}-android-debug
         path: main/makelove-build/android/${{ steps.metadata.outputs.id }}-debug.apk
-    - name: Artifact (Android Release)
-      if: env.KEYSTORE_ALIAS != '' && env.KEYSTORE_BASE64 != '' && env.KEYSTORE_KEYPASSWORD != '' && env.KEYSTORE_STOREPASSWORD != ''
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{ steps.metadata.outputs.id }}-android-release
-        path: main/makelove-build/android/${{ steps.metadata.outputs.id }}-release.apk
